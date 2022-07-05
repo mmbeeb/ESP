@@ -1,0 +1,51 @@
+Econet Stream Protocol (ESP)
+============================
+
+The goal of ESP is to provide a robust and reliable connection which carries bi-directional data streams between two Econet hosts.
+
+
+Econet's responsibilities:
+--------------------------
+1) To attempt to transmit the data from one host to another.
+2) To validate an arriving data frame, i.e. by the use of it's CRC.
+3) To transfer the data over the Tube interface.
+
+
+Extended Econet Header
+----------------------
+
+ Byte       Econet Header                 Bit     Flag Byte
+      +----------------------+                +---------------+
+  0   |      Destination     |            7   |      Set      |
+  1   |        Station       |            6   |    ACK Flag   |
+      +----------------------+            5   |    RST Flag   |
+  3   |        Source        |            4   |    SYN Flag   |
+  4   |        Station       |            3   |    FIN Flag   |
+      +----------------------+                +---------------+
+  5   | Flag Byte (see right)|            2   |    Window     |
+      +----------------------+            1   |(bits 8 to 10) |
+  6   |   Destination Port   |            0   |               |
+      +----------------------+                +---------------+
+
+             Extension
+      +----------------------+
+  0   |      Source Port     |
+      +----------------------+
+  1   | Window (bits 0 to 7) |
+      +----------------------+
+  2   |       Sequence       |
+  3   |        Number        |
+      +----------------------+
+  4   |    Acknowledgement   |
+  5   |        Number        |
+      +----------------------+
+
+
+The Transmission Control Block (TCB)
+------------------------------------
+
+to be continued...
+
+
+
+   
